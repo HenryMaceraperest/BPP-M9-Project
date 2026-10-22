@@ -1,0 +1,26 @@
+{
+  "name": "bpp-m9-project",
+  "version": "1.0.0",
+  "description": "BPP Module 9 Project",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/HenryMaceraperest/BPP-M9-Project.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/HenryMaceraperest/BPP-M9-Project/issues"
+  },
+  "homepage": "https://github.com/HenryMaceraperest/BPP-M9-Project#readme",
+  "dependencies": {
+    "cors": "^2.8.6",
+    "dotenv": "^18.0.8",
+    "express": "^5.3.0"
+  }
+}
