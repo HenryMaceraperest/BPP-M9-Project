@@ -12,3 +12,5 @@ BPP Module 9 Project
 7. npm install express dotenv cors
 8. dvc add --insert_model_file.pt--
 9. docker build -t ai_model_service:1.0 .
+10. docker run -d -p 8000:8000 --name running_model_container ai_model_service:1.0
+
