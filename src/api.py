@@ -1,10 +1,12 @@
 from contextlib import asynccontextmanager
 
-from fastapi import FastAPI
+from fastapi import FastAPI, HTTPException
 from pydantic import BaseModel, ConfigDict
 
 from src.predict import HousingPredictor
+import logging
 
+logger = logging.getLogger(__name__)
 
 predictor = None
 
@@ -68,24 +70,29 @@ def health():
     response_model=PredictionResponse,
 )
 def predict(features: HousingFeatures):
+    try:
+        prediction = predictor.predict(
+            features.model_dump()
+        )
 
-    prediction = predictor.predict(
-        features.model_dump()
-    )
-
-    return PredictionResponse(
-        predicted_value=round(
-            prediction,
-            4,
-        ),
-        predicted_value_usd=round(
-            prediction * 100_000,
-            2,
-        ),
-        warning=(
-            "This model uses historical 1990 census data "
-            "and predicts census block-group median house "
-            "value. The target is capped and should not be "
-            "interpreted as a current individual property valuation."
-        ),
-    )
+        return PredictionResponse(
+            predicted_value=round(
+                prediction,
+                4,
+            ),
+            predicted_value_usd=round(
+                prediction * 100_000,
+                2,
+            ),
+            warning=(
+                "This model uses historical 1990 census data "
+                "and predicts census block-group median house "
+                "value. The target is capped and should not be "
+                "interpreted as a current individual property valuation."
+            ),
+        )
+    except Exception:
+        raise HTTPException(
+            status_code=500,
+            detail="Unable to generate predictions"
+        )

@@ -3,6 +3,7 @@ data:
   random_state: 42
 
 model:
-  n_estimators: 200
+  n_estimators: 500
   max_depth: 15
   min_samples_leaf: 2
+  random_state: 42

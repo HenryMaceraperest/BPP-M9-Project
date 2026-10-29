@@ -91,6 +91,7 @@ def main():
     model_bundle = {
         "model": model,
         "features": FEATURES,
+        "model_version": "1.0"
     }
 
     joblib.dump(

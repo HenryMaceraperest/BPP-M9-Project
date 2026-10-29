@@ -37,13 +37,13 @@ stages:
         data.test_size: 0.2
         model.max_depth: 15
         model.min_samples_leaf: 2
-        model.n_estimators: 200
+        model.n_estimators: 500
     outs:
     - path: metrics/metrics.json
       hash: md5
-      md5: 60f616a142623a62673c2a16dc008203
-      size: 97
+      md5: 499a13ab5f992e993462c470ef85c53f
+      size: 99
     - path: models/model.joblib
       hash: md5
-      md5: a6ce2bac903bacf1b9b6ca111bf822b7
-      size: 76895659
+      md5: 10b02b52fd53407235103c36d8e10c7c
+      size: 192019627
