@@ -1,0 +1,34 @@
+stages:
+
+  fetch_data:
+    cmd: python -m src.fetch_data
+
+    deps:
+      - src/fetch_data.py
+      - src/config.py
+
+    outs:
+      - data/raw/california_housing.parquet
+
+
+  train:
+    cmd: python -m src.train
+
+    deps:
+      - src/train.py
+      - src/config.py
+      - data/raw/california_housing.parquet
+
+    params:
+      - data.test_size
+      - data.random_state
+      - model.n_estimators
+      - model.max_depth
+      - model.min_samples_leaf
+
+    outs:
+      - models/model.joblib
+
+    metrics:
+      - metrics/metrics.json:
+          cache: false

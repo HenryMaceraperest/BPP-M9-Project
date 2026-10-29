@@ -1,0 +1,49 @@
+schema: '2.0'
+stages:
+  fetch_data:
+    cmd: python -m src.fetch_data
+    deps:
+    - path: src/config.py
+      hash: md5
+      md5: 4fc6c5b0a73270ecaab441a57a880ce8
+      size: 478
+    - path: src/fetch_data.py
+      hash: md5
+      md5: 72d8894bac2fdb05664d002b7171fb5a
+      size: 495
+    outs:
+    - path: data/raw/california_housing.parquet
+      hash: md5
+      md5: 8db9767bb00705df0381da8544abb0f9
+      size: 811165
+  train:
+    cmd: python -m src.train
+    deps:
+    - path: data/raw/california_housing.parquet
+      hash: md5
+      md5: 8db9767bb00705df0381da8544abb0f9
+      size: 811165
+    - path: src/config.py
+      hash: md5
+      md5: 4fc6c5b0a73270ecaab441a57a880ce8
+      size: 478
+    - path: src/train.py
+      hash: md5
+      md5: ddb1df09475af80c315ae6798f76e68f
+      size: 2256
+    params:
+      params.yaml:
+        data.random_state: 42
+        data.test_size: 0.2
+        model.max_depth: 15
+        model.min_samples_leaf: 2
+        model.n_estimators: 200
+    outs:
+    - path: metrics/metrics.json
+      hash: md5
+      md5: 60f616a142623a62673c2a16dc008203
+      size: 97
+    - path: models/model.joblib
+      hash: md5
+      md5: a6ce2bac903bacf1b9b6ca111bf822b7
+      size: 76895659

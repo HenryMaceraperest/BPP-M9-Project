@@ -1,4 +1,11 @@
-torch
-transformers
 fastapi
 uvicorn
+scikit-learn
+pandas
+pyarrow
+joblib
+
+PyYAML
+dvc
+pytest
+httpx
