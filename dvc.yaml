@@ -1,16 +1,4 @@
 stages:
-
-  fetch_data:
-    cmd: python -m src.fetch_data
-
-    deps:
-      - src/fetch_data.py
-      - src/config.py
-
-    outs:
-      - data/raw/california_housing.parquet
-
-
   train:
     cmd: python -m src.train
 
