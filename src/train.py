@@ -51,7 +51,7 @@ def main():
         max_depth=params["model"]["max_depth"],
         min_samples_leaf=params["model"]["min_samples_leaf"],
         random_state=params["data"]["random_state"],
-        n_jobs=["model"]["n_jobs"],
+        n_jobs=params["model"]["n_jobs"],
     )
 
     model.fit(X_train, y_train)
@@ -91,7 +91,8 @@ def main():
     model_bundle = {
         "model": model,
         "features": FEATURES,
-        "model_version": "1.0"
+        "model_version": "1.0",
+        "data_version": params["data"]["version"],
     }
 
     joblib.dump(

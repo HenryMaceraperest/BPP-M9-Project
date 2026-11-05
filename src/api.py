@@ -1,4 +1,5 @@
 from contextlib import asynccontextmanager
+from typing import Self
 
 from fastapi import FastAPI, HTTPException, Response, status
 from pydantic import BaseModel, ConfigDict, Field, model_validator
@@ -135,7 +136,7 @@ def health(response: Response):
             else "unhealthy"
         ),
         "model_loaded": model_loaded,
-        "model_version": (
+        "model_version": (          
             predictor.model_version
             if model_loaded
             else None

@@ -11,6 +11,8 @@ class HousingPredictor:
 
         self.model = bundle["model"]
         self.features = bundle["features"]
+        self.model_version = bundle["model_version"]
+        self.data_version = bundle["data_version"]
 
     def predict(self, features: dict) -> float:
         input_data = pd.DataFrame(

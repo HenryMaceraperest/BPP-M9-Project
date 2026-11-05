@@ -1,6 +1,6 @@
 from sklearn.datasets import fetch_california_housing
 
-from src.config import DATA_PATH
+from config import DATA_PATH
 
 
 def main():

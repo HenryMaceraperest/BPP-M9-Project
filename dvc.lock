@@ -29,8 +29,8 @@ stages:
       size: 478
     - path: src/train.py
       hash: md5
-      md5: ddb1df09475af80c315ae6798f76e68f
-      size: 2256
+      md5: b7197ae40146a097bcf817f2dd926afb
+      size: 2364
     params:
       params.yaml:
         data.random_state: 42
@@ -41,9 +41,9 @@ stages:
     outs:
     - path: metrics/metrics.json
       hash: md5
-      md5: 499a13ab5f992e993462c470ef85c53f
-      size: 99
+      md5: 8800cd9b3093a7bacfc98ad9215ac65f
+      size: 95
     - path: models/model.joblib
       hash: md5
-      md5: 10b02b52fd53407235103c36d8e10c7c
-      size: 192019627
+      md5: 2e1b95fe729d1a5e03f2a79655bd05a1
+      size: 192224182
